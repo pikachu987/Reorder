@@ -1,0 +1,16 @@
+PODS:
+  - Reorder (0.1.0)
+
+DEPENDENCIES:
+  - Reorder (from `../`)
+
+EXTERNAL SOURCES:
+  Reorder:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Reorder: 6458af536715a8e2aff826fe29e1a10ebf2348d3
+
+PODFILE CHECKSUM: 89cc3e5130bf0ef712a349fa179f6ebadf4a3076
+
+COCOAPODS: 1.8.4

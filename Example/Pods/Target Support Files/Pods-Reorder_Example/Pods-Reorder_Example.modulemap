@@ -1,0 +1,6 @@
+framework module Pods_Reorder_Example {
+  umbrella header "Pods-Reorder_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

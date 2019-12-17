@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'Reorder_Example' do
+  pod 'Reorder', :path => '../'
+
+  target 'Reorder_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
