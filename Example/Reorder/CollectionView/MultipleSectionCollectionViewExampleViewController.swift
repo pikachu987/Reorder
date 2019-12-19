@@ -39,6 +39,7 @@ class MultipleSectionCollectionViewExampleViewController: UIViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.reloadData()
+        self.collectionView.reorder.scrollFrame = CGRect(x: 0, y: 88, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 88)
         self.collectionView.reorder.delegate = self
     }
 }
@@ -68,7 +69,7 @@ extension MultipleSectionCollectionViewExampleViewController: UICollectionViewDa
 // MARK: CollectionViewReorderDelegate
 extension MultipleSectionCollectionViewExampleViewController: CollectionViewReorderDelegate {
     var reorderSuperview: UIView {
-        return self.view
+        return self.navigationController?.view ?? UIView()
     }
     
     func collectionViewReorder(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {

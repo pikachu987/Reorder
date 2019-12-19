@@ -6,16 +6,17 @@
 //  Copyright © 2019 Gwanho Kim. All rights reserved.
 //
 
-// 겹칠때 타이밍 enum
-
 import UIKit
 
 public class Reorder {
     weak var scrollView: UIScrollView?
     
-    public var snapshotRadius: CGFloat = 0
     public var scale: Scale = .medium
+    public var overlapBehaviour: OverlapBehaviour = .twoThirds
+    
+    public var snapshotRadius: CGFloat = 0
     public var minimumPressDuration: TimeInterval = 0.5
+    
     public var scrollFrame: CGRect?
     
     // Enabled Auto Scroll
@@ -106,24 +107,6 @@ public class Reorder {
         let isUp = beforeGesturePoint.y - gestureExactPoint.y > 0
         let isLeft = beforeGesturePoint.x - gestureExactPoint.x > 0
         
-        self.beforeGesturePoint?.y = gestureExactPoint.y
-        self.snapshotView?.frame.origin.y = gestureExactPoint.y
-        
-        if self.isMoveUpDown { // Only Vertical Move
-            self.beforeGesturePoint?.x = gestureExactPoint.x
-            self.snapshotView?.frame.origin.x = gestureExactPoint.x
-        }
-        
-        let width = self.snapshotView?.bounds.width ?? 0
-        let height = self.snapshotView?.bounds.height ?? 0
-
-        var indexPath: IndexPath?
-        
-        let minY = isUp ? viewExactPoint.y + (height / 3) : viewExactPoint.y + (height / 3 * 2)
-        let maxY = isUp ? viewExactPoint.y + height : viewExactPoint.y
-        let minX = isLeft ? viewExactPoint.x + (width / 3) : viewExactPoint.x + (width / 3 * 2)
-        let maxX = isLeft ? viewExactPoint.x + width : viewExactPoint.x
-        
         // Top & Bottom Auto Scroll
         if let scrollFrame = self.scrollFrame, self.isScrollEnabled {
             if isUp && scrollFrame.origin.y > gestureExactPoint.y {
@@ -136,6 +119,24 @@ public class Reorder {
                 }
             }
         }
+        
+        self.beforeGesturePoint?.y = gestureExactPoint.y
+        self.snapshotView?.frame.origin.y = gestureExactPoint.y
+        
+        if self.isMoveUpDown { // Not Only Vertical Move
+            self.beforeGesturePoint?.x = gestureExactPoint.x
+            self.snapshotView?.frame.origin.x = gestureExactPoint.x
+        }
+        
+        let width = self.snapshotView?.bounds.width ?? 0
+        let height = self.snapshotView?.bounds.height ?? 0
+        
+        let minY = isUp ? viewExactPoint.y + self.overlapBehaviour.minus(height) : viewExactPoint.y + self.overlapBehaviour.plus(height)
+        let maxY = isUp ? viewExactPoint.y + height : viewExactPoint.y
+        let minX = isLeft ? viewExactPoint.x + self.overlapBehaviour.minus(width) : viewExactPoint.x + self.overlapBehaviour.plus(width)
+        let maxX = isLeft ? viewExactPoint.x + width : viewExactPoint.x
+        
+        var indexPath: IndexPath?
         
         if let minIndexPath = self.scrollView?.indexPath(at: CGPoint(x: minX, y: minY)) {
             indexPath = minIndexPath
@@ -194,6 +195,33 @@ extension Reorder {
             case .medium: return 1.05
             case .large: return 1.08
             case .custom(let scale): return scale
+            }
+        }
+    }
+}
+
+// MARK: Reorder + OverlapBehaviour
+extension Reorder {
+    public enum OverlapBehaviour {
+        case oneThird
+        case half
+        case twoThirds
+        
+        // UP & LEFT
+        func minus(_ value: CGFloat) -> CGFloat {
+            switch self {
+            case .oneThird: return value / 3 * 1
+            case .half: return value / 2
+            case .twoThirds: return value / 3 * 2
+            }
+        }
+        
+        // DOWN & BOTTOM
+        func plus(_ value: CGFloat) -> CGFloat {
+            switch self {
+            case .oneThird: return value / 3 * 2
+            case .half: return value / 2
+            case .twoThirds: return value / 3 * 1
             }
         }
     }
