@@ -21,8 +21,8 @@ struct ReorderModel {
     
     static var list: [ReorderModel] {
         return [
-        ReorderModel(key: "0", color: UIColor(red: 248/255, green: 246/255, blue: 209/255, alpha: 1), canMove: false),
-        ReorderModel(key: "1", color: UIColor(red: 183/255, green: 217/255, blue: 242/255, alpha: 1), canMove: false),
+        ReorderModel(key: "0", color: UIColor(red: 248/255, green: 246/255, blue: 209/255, alpha: 1)),
+        ReorderModel(key: "1", color: UIColor(red: 183/255, green: 217/255, blue: 242/255, alpha: 1)),
         ReorderModel(key: "2", color: UIColor(red: 243/255, green: 208/255, blue: 224/255, alpha: 1)),
         ReorderModel(key: "3", color: UIColor(red: 89/255, green: 133/255, blue: 185/255, alpha: 1)),
         ReorderModel(key: "4", color: UIColor(red: 156/255, green: 201/255, blue: 233/255, alpha: 1)),

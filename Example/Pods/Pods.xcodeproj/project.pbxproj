@@ -27,6 +27,7 @@
 		E09F4EE623A993940005819D /* CollectionViewReorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09F4EDA23A993940005819D /* CollectionViewReorder.swift */; };
 		E09F4EE723A993940005819D /* UICollectionView+AssociatedKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09F4EDB23A993940005819D /* UICollectionView+AssociatedKeys.swift */; };
 		E09F4EE823A993940005819D /* ReorderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09F4EDC23A993940005819D /* ReorderCell.swift */; };
+		E09F4F1023AA56D70005819D /* UIView+SafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09F4F0F23AA56D70005819D /* UIView+SafeArea.swift */; };
 		F278B68F14B6BCB162C136386EDCC5B1 /* Reorder-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7570033993C49519EC250A7C039CBF /* Reorder-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -75,18 +76,19 @@
 		C542199ABADB4FFC97D2D1310100272F /* Pods-Reorder_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Reorder_Example-umbrella.h"; sourceTree = "<group>"; };
 		DA274FBAD0A023273969CDB8901F10A5 /* Reorder.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Reorder.modulemap; sourceTree = "<group>"; };
 		DA35EAB4F5E44039833C1534DB8B3DC7 /* Reorder.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = Reorder.podspec; sourceTree = "<group>"; tabWidth = 2; };
-		E09F4ED123A993930005819D /* UITableView+AssociatedKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITableView+AssociatedKeys.swift"; path = "Reorder/Classes/UITableView+AssociatedKeys.swift"; sourceTree = "<group>"; };
-		E09F4ED223A993930005819D /* UIView+cellContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+cellContentView.swift"; path = "Reorder/Classes/UIView+cellContentView.swift"; sourceTree = "<group>"; };
-		E09F4ED323A993930005819D /* ReorderDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReorderDelegate.swift; path = Reorder/Classes/ReorderDelegate.swift; sourceTree = "<group>"; };
-		E09F4ED423A993930005819D /* TableViewReorderDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewReorderDelegate.swift; path = Reorder/Classes/TableViewReorderDelegate.swift; sourceTree = "<group>"; };
-		E09F4ED523A993940005819D /* UIScrollView+IndexPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIScrollView+IndexPath.swift"; path = "Reorder/Classes/UIScrollView+IndexPath.swift"; sourceTree = "<group>"; };
-		E09F4ED623A993940005819D /* UIView+imageWithView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+imageWithView.swift"; path = "Reorder/Classes/UIView+imageWithView.swift"; sourceTree = "<group>"; };
-		E09F4ED723A993940005819D /* Reorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reorder.swift; path = Reorder/Classes/Reorder.swift; sourceTree = "<group>"; };
-		E09F4ED823A993940005819D /* TableViewReorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewReorder.swift; path = Reorder/Classes/TableViewReorder.swift; sourceTree = "<group>"; };
-		E09F4ED923A993940005819D /* CollectionViewReorderDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewReorderDelegate.swift; path = Reorder/Classes/CollectionViewReorderDelegate.swift; sourceTree = "<group>"; };
-		E09F4EDA23A993940005819D /* CollectionViewReorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewReorder.swift; path = Reorder/Classes/CollectionViewReorder.swift; sourceTree = "<group>"; };
-		E09F4EDB23A993940005819D /* UICollectionView+AssociatedKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UICollectionView+AssociatedKeys.swift"; path = "Reorder/Classes/UICollectionView+AssociatedKeys.swift"; sourceTree = "<group>"; };
-		E09F4EDC23A993940005819D /* ReorderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReorderCell.swift; path = Reorder/Classes/ReorderCell.swift; sourceTree = "<group>"; };
+		E09F4ED123A993930005819D /* UITableView+AssociatedKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+AssociatedKeys.swift"; sourceTree = "<group>"; };
+		E09F4ED223A993930005819D /* UIView+cellContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+cellContentView.swift"; sourceTree = "<group>"; };
+		E09F4ED323A993930005819D /* ReorderDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReorderDelegate.swift; sourceTree = "<group>"; };
+		E09F4ED423A993930005819D /* TableViewReorderDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewReorderDelegate.swift; sourceTree = "<group>"; };
+		E09F4ED523A993940005819D /* UIScrollView+IndexPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+IndexPath.swift"; sourceTree = "<group>"; };
+		E09F4ED623A993940005819D /* UIView+imageWithView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+imageWithView.swift"; sourceTree = "<group>"; };
+		E09F4ED723A993940005819D /* Reorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reorder.swift; sourceTree = "<group>"; };
+		E09F4ED823A993940005819D /* TableViewReorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewReorder.swift; sourceTree = "<group>"; };
+		E09F4ED923A993940005819D /* CollectionViewReorderDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewReorderDelegate.swift; sourceTree = "<group>"; };
+		E09F4EDA23A993940005819D /* CollectionViewReorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewReorder.swift; sourceTree = "<group>"; };
+		E09F4EDB23A993940005819D /* UICollectionView+AssociatedKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+AssociatedKeys.swift"; sourceTree = "<group>"; };
+		E09F4EDC23A993940005819D /* ReorderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReorderCell.swift; sourceTree = "<group>"; };
+		E09F4F0F23AA56D70005819D /* UIView+SafeArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SafeArea.swift"; sourceTree = "<group>"; };
 		E0FE288E562F70C5BA8D725B937BFFA4 /* Pods-Reorder_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Reorder_Example.modulemap"; sourceTree = "<group>"; };
 		EBC544D56A1A3857D9F615947454D40B /* Reorder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Reorder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFD0CC1A762BF22AE059D38E69C611F0 /* Pods-Reorder_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Reorder_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -182,18 +184,10 @@
 		B901164BE44F38DECA03AD983E32850C /* Reorder */ = {
 			isa = PBXGroup;
 			children = (
-				E09F4EDA23A993940005819D /* CollectionViewReorder.swift */,
-				E09F4ED923A993940005819D /* CollectionViewReorderDelegate.swift */,
-				E09F4ED723A993940005819D /* Reorder.swift */,
-				E09F4EDC23A993940005819D /* ReorderCell.swift */,
-				E09F4ED323A993930005819D /* ReorderDelegate.swift */,
-				E09F4ED823A993940005819D /* TableViewReorder.swift */,
-				E09F4ED423A993930005819D /* TableViewReorderDelegate.swift */,
-				E09F4EDB23A993940005819D /* UICollectionView+AssociatedKeys.swift */,
-				E09F4ED523A993940005819D /* UIScrollView+IndexPath.swift */,
-				E09F4ED123A993930005819D /* UITableView+AssociatedKeys.swift */,
-				E09F4ED223A993930005819D /* UIView+cellContentView.swift */,
-				E09F4ED623A993940005819D /* UIView+imageWithView.swift */,
+				E09F4F0E23AA514A0005819D /* Reorder */,
+				E09F4F0B23AA50FD0005819D /* CollectionView */,
+				E09F4F0C23AA510D0005819D /* TableView */,
+				E09F4F0D23AA512C0005819D /* Extension */,
 				B4A72B279455E77B032E1ACE82B6E1AC /* Pod */,
 				66DDBA2CD38B77F3CAF7105051F3E5A5 /* Support Files */,
 			);
@@ -252,6 +246,51 @@
 				EBC544D56A1A3857D9F615947454D40B /* Reorder.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		E09F4F0B23AA50FD0005819D /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				E09F4EDB23A993940005819D /* UICollectionView+AssociatedKeys.swift */,
+				E09F4ED923A993940005819D /* CollectionViewReorderDelegate.swift */,
+				E09F4EDA23A993940005819D /* CollectionViewReorder.swift */,
+			);
+			name = CollectionView;
+			path = Reorder/Classes/CollectionView;
+			sourceTree = "<group>";
+		};
+		E09F4F0C23AA510D0005819D /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				E09F4ED123A993930005819D /* UITableView+AssociatedKeys.swift */,
+				E09F4ED423A993930005819D /* TableViewReorderDelegate.swift */,
+				E09F4ED823A993940005819D /* TableViewReorder.swift */,
+			);
+			name = TableView;
+			path = Reorder/Classes/TableView;
+			sourceTree = "<group>";
+		};
+		E09F4F0D23AA512C0005819D /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E09F4ED623A993940005819D /* UIView+imageWithView.swift */,
+				E09F4ED223A993930005819D /* UIView+cellContentView.swift */,
+				E09F4ED523A993940005819D /* UIScrollView+IndexPath.swift */,
+				E09F4F0F23AA56D70005819D /* UIView+SafeArea.swift */,
+			);
+			name = Extension;
+			path = Reorder/Classes/Extension;
+			sourceTree = "<group>";
+		};
+		E09F4F0E23AA514A0005819D /* Reorder */ = {
+			isa = PBXGroup;
+			children = (
+				E09F4ED323A993930005819D /* ReorderDelegate.swift */,
+				E09F4ED723A993940005819D /* Reorder.swift */,
+				E09F4EDC23A993940005819D /* ReorderCell.swift */,
+			);
+			name = Reorder;
+			path = Reorder/Classes/Reorder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -426,6 +465,7 @@
 				E09F4EE723A993940005819D /* UICollectionView+AssociatedKeys.swift in Sources */,
 				E09F4EE523A993940005819D /* CollectionViewReorderDelegate.swift in Sources */,
 				E09F4EDE23A993940005819D /* UIView+cellContentView.swift in Sources */,
+				E09F4F1023AA56D70005819D /* UIView+SafeArea.swift in Sources */,
 				E09F4EE123A993940005819D /* UIScrollView+IndexPath.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

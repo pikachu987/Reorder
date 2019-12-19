@@ -36,6 +36,7 @@ class ReorderTableViewExampleViewController: UIViewController {
         self.tableView.dataSource = self
         self.tableView.reorder.delegate = self
         self.tableView.reorder.scale = .large
+        self.tableView.reorder.scrollFrame = CGRect(x: 0, y: 88, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 88)
         self.tableView.reloadData()
     }
 }
@@ -65,7 +66,7 @@ extension ReorderTableViewExampleViewController: UITableViewDataSource {
 // MARK: TableViewReorderDelegate
 extension ReorderTableViewExampleViewController: TableViewReorderDelegate {
     var reorderSuperview: UIView {
-        return self.view
+        return self.navigationController?.view ?? UIView()
     }
     
     func tableViewReorder(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {

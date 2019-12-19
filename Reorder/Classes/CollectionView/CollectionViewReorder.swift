@@ -15,14 +15,14 @@ public class CollectionViewReorder: Reorder {
         return self.delegate
     }
     
-    override var collectionType: Reorder.CollectionType {
-        return .collectionView
-    }
+    public lazy var gestureRecognizer: UILongPressGestureRecognizer = {
+        return UILongPressGestureRecognizer(target: self, action: #selector(self.longPressGesture(_:)))
+    }()
     
     public init(collectionView: UICollectionView) {
         super.init()
-        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressGesture(_:)))
-        collectionView.addGestureRecognizer(longPressGestureRecognizer)
+        self.gestureRecognizer.minimumPressDuration = self.minimumPressDuration
+        collectionView.addGestureRecognizer(self.gestureRecognizer)
         self.scrollView = collectionView
     }
     

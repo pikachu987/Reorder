@@ -6,11 +6,7 @@
 //  Copyright © 2019 Gwanho Kim. All rights reserved.
 //
 
-// 위아래 스크롤
 // 겹칠때 타이밍 enum
-// longGesture Time인터벌
-// 네비게이션 위로... ? 탭컨트롤러 위로...?
-// 제스쳐가 아니라 이벤트 발생바로 되게하는 펑션
 
 import UIKit
 
@@ -19,18 +15,22 @@ public class Reorder {
     
     public var snapshotRadius: CGFloat = 0
     public var scale: Scale = .medium
+    public var minimumPressDuration: TimeInterval = 0.5
+    public var scrollFrame: CGRect?
     
+    // Enabled Auto Scroll
+    private var isScrollEnabled = true
+    
+    // Gesture
     private var beforeIndexPath: IndexPath?
     private var touchPoint: CGPoint?
-    private var snapshotView: UIView?
     private var beforeGesturePoint: CGPoint?
+    
+    // Snapshot
+    private var snapshotView: UIView?
     
     var reorderDelegate: ReorderDelegate? {
         return nil
-    }
-    
-    var collectionType: CollectionType {
-        return .default
     }
     
     var isMoveUpDown: Bool {
@@ -41,7 +41,7 @@ public class Reorder {
         
     }
     
-    @objc func longPressGesture(_ gestureRecognizer: UILongPressGestureRecognizer) {
+    @objc public func longPressGesture(_ gestureRecognizer: UILongPressGestureRecognizer) {
         switch gestureRecognizer.state {
         case .began:
             self.began(gestureRecognizer: gestureRecognizer)
@@ -53,6 +53,7 @@ public class Reorder {
         }
     }
     
+    // Began
     private func began(gestureRecognizer: UILongPressGestureRecognizer) {
         let point = gestureRecognizer.location(in: self.scrollView)
         guard let indexPath = self.scrollView?.indexPath(at: point),
@@ -92,10 +93,11 @@ public class Reorder {
         cell.cellContentView?.alpha = 0
     }
     
+    // Changed
     private func changed(gestureRecognizer: UILongPressGestureRecognizer) {
         guard let touchPoint = self.touchPoint else { return }
         guard let beforeGesturePoint = self.beforeGesturePoint else { return }
-
+        
         let gestureLocation = gestureRecognizer.location(in: self.reorderDelegate?.reorderSuperview)
         let viewLocation = gestureRecognizer.location(in: self.scrollView)
 
@@ -107,7 +109,7 @@ public class Reorder {
         self.beforeGesturePoint?.y = gestureExactPoint.y
         self.snapshotView?.frame.origin.y = gestureExactPoint.y
         
-        if self.isMoveUpDown {
+        if self.isMoveUpDown { // Only Vertical Move
             self.beforeGesturePoint?.x = gestureExactPoint.x
             self.snapshotView?.frame.origin.x = gestureExactPoint.x
         }
@@ -116,12 +118,25 @@ public class Reorder {
         let height = self.snapshotView?.bounds.height ?? 0
 
         var indexPath: IndexPath?
-
+        
         let minY = isUp ? viewExactPoint.y + (height / 3) : viewExactPoint.y + (height / 3 * 2)
         let maxY = isUp ? viewExactPoint.y + height : viewExactPoint.y
         let minX = isLeft ? viewExactPoint.x + (width / 3) : viewExactPoint.x + (width / 3 * 2)
         let maxX = isLeft ? viewExactPoint.x + width : viewExactPoint.x
-
+        
+        // Top & Bottom Auto Scroll
+        if let scrollFrame = self.scrollFrame, self.isScrollEnabled {
+            if isUp && scrollFrame.origin.y > gestureExactPoint.y {
+                self.scrollView?.scrollToTop { (isScrollEnabled) in
+                    self.isScrollEnabled = isScrollEnabled
+                }
+            } else if !isUp && scrollFrame.size.height < gestureExactPoint.y {
+                self.scrollView?.scrollToBottom { (isScrollEnabled) in
+                    self.isScrollEnabled = isScrollEnabled
+                }
+            }
+        }
+        
         if let minIndexPath = self.scrollView?.indexPath(at: CGPoint(x: minX, y: minY)) {
             indexPath = minIndexPath
         } else if let maxIndexPath = self.scrollView?.indexPath(at: CGPoint(x: maxX, y: maxY)) {
@@ -141,6 +156,7 @@ public class Reorder {
         }
     }
     
+    // Ended
     private func ended(gestureRecognizer: UILongPressGestureRecognizer) {
         if let indexPath = self.beforeIndexPath {
             self.scrollView?.cell(at: indexPath)?.cellContentView?.alpha = 1
@@ -162,15 +178,7 @@ public class Reorder {
     }
 }
 
-// MARK: Reorder + CollectionType
-extension Reorder {
-    enum CollectionType {
-        case `default`
-        case tableView
-        case collectionView
-    }
-}
-
+// MARK: Reorder + Scale
 extension Reorder {
     public enum Scale {
         case custom(CGFloat)

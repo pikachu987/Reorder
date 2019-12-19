@@ -17,18 +17,18 @@ public class TableViewReorder: Reorder {
         return self.delegate
     }
     
-    override var collectionType: Reorder.CollectionType {
-        return .tableView
-    }
-    
     override var isMoveUpDown: Bool {
         return self.isMoveVertical
     }
     
+    public lazy var gestureRecognizer: UILongPressGestureRecognizer = {
+        return UILongPressGestureRecognizer(target: self, action: #selector(self.longPressGesture(_:)))
+    }()
+    
     public init(tableView: UITableView) {
         super.init()
-        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressGesture(_:)))
-        tableView.addGestureRecognizer(longPressGestureRecognizer)
+        self.gestureRecognizer.minimumPressDuration = self.minimumPressDuration
+        tableView.addGestureRecognizer(self.gestureRecognizer)
         self.scrollView = tableView
     }
     

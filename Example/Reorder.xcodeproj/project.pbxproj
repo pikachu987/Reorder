@@ -179,8 +179,8 @@
 		E09F4EFB23A994210005819D /* TableView */ = {
 			isa = PBXGroup;
 			children = (
-				E09F4EFE23A994810005819D /* MultipleSectionTableViewExampleViewController.swift */,
 				E09F4EFF23A994810005819D /* ReorderTableViewExampleViewController.swift */,
+				E09F4EFE23A994810005819D /* MultipleSectionTableViewExampleViewController.swift */,
 				E09F4F0023A994810005819D /* TableViewCell.swift */,
 			);
 			path = TableView;

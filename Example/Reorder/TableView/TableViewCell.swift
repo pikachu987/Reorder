@@ -54,7 +54,7 @@ class TableViewCell: UITableViewCell, ReorderCell {
             NSLayoutConstraint(item: self.contentView, attribute: .leading, relatedBy: .equal, toItem: self.colorView, attribute: .leading, multiplier: 1, constant: -20),
             NSLayoutConstraint(item: self.contentView, attribute: .trailing, relatedBy: .equal, toItem: self.colorView, attribute: .trailing, multiplier: 1, constant: 20),
             NSLayoutConstraint(item: self.contentView, attribute: .top, relatedBy: .equal, toItem: self.colorView, attribute: .top, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: self.contentView, attribute: .bottom, relatedBy: .equal, toItem: self.colorView, attribute: .bottom, multiplier: 1, constant: 0)
+            NSLayoutConstraint(item: self.contentView, attribute: .bottom, relatedBy: .equal, toItem: self.colorView, attribute: .bottom, multiplier: 1, constant: 10)
         ])
         
         self.colorView.addConstraints([
