@@ -1,8 +1,8 @@
 # Reorder
 
-[![Version](https://img.shields.io/cocoapods/v/Tags.svg?style=flat)](http://cocoapods.org/pods/Reorder)
-[![License](https://img.shields.io/cocoapods/l/Tags.svg?style=flat)](http://cocoapods.org/pods/Reorder)
-[![Platform](https://img.shields.io/cocoapods/p/Tags.svg?style=flat)](http://cocoapods.org/pods/Reorder)
+[![Version](https://img.shields.io/cocoapods/v/Reorder.svg?style=flat)](http://cocoapods.org/pods/Reorder)
+[![License](https://img.shields.io/cocoapods/l/Reorder.svg?style=flat)](http://cocoapods.org/pods/Reorder)
+[![Platform](https://img.shields.io/cocoapods/p/Reorder.svg?style=flat)](http://cocoapods.org/pods/Reorder)
 [![Swift 5.0](https://img.shields.io/badge/Swift-5.0-orange.svg?style=flat)](https://developer.apple.com/swift/)
 
 ## Introduce
