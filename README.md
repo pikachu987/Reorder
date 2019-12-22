@@ -7,9 +7,9 @@
 
 ## Introduce
 
-<img src="./images/table.gif" width="200">
-<img src="./images/collection.gif" width="200">
-<img src="./images/section.gif" width="200">
+|UITableView|UICollectionView|MultipleSection|
+|---|---|---|
+|<img src="./images/table.gif" width="200px">|<img src="./images/collection.gif" width="200px">|<img src="./images/section.gif" width="200px">|
 
 ## Requirements
 
@@ -105,7 +105,7 @@ extension MultipleSectionCollectionViewExampleViewController: CollectionViewReor
 
 ### Move Auto Scroll
 
-<img src="./images/scroll.gif" width="200">
+<img src="./images/scroll.gif" width="200px">
 
 ```swift
 self.tableView.reorder.scrollFrame = CGRect(x: 0, y: 88, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 88)
@@ -114,7 +114,7 @@ self.collectionView.reorder.scrollFrame = CGRect(x: 0, y: 88, width: UIScreen.ma
 
 ### Can't Move
 
-<img src="./images/move.gif" width="200">
+<img src="./images/move.gif" width="200px">
 
 ```swift
 // MARK: TableViewReorderDelegate
@@ -138,16 +138,6 @@ enum Scale {
     case small
     case medium
     case large
-
-    var scale: CGFloat {
-        switch self {
-        case .none: return 1
-        case .small: return 1.02
-        case .medium: return 1.05
-        case .large: return 1.08
-        case .custom(let scale): return scale
-        }
-    }
 }
 ```
 
@@ -160,24 +150,6 @@ public enum OverlapBehaviour {
     case oneThird
     case half
     case twoThirds
-
-    // UP & LEFT
-    func minus(_ value: CGFloat) -> CGFloat {
-        switch self {
-        case .oneThird: return value / 3 * 1
-        case .half: return value / 2
-        case .twoThirds: return value / 3 * 2
-        }
-    }
-
-    // DOWN & BOTTOM
-    func plus(_ value: CGFloat) -> CGFloat {
-        switch self {
-        case .oneThird: return value / 3 * 2
-        case .half: return value / 2
-        case .twoThirds: return value / 3 * 1
-        }
-    }
 }
 ```
 
@@ -199,6 +171,22 @@ protocol TableViewReorderDelegate: ReorderDelegate {
     func tableViewReorder(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath)
     func tableViewReorder(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool
 }
+```
+
+### Protocol
+
+Select the view for which you want to create a snapshop. Is optional.
+If you don't adopt ReorderCell, make the contentView a snapshot.
+
+```swift
+class TableViewCell: UITableViewCell, ReorderCell {
+    private let reorderView = UIView()
+
+    var reorderSnapshotView: UIView {
+        return self.reorderView
+    }
+}
+
 ```
 
 ## Author
